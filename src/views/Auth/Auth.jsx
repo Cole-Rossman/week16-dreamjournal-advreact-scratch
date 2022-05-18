@@ -1,10 +1,12 @@
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { signUpUser } from '../../services/users';
+import { useAuth } from '../../hooks/user';
 import authStyle from './Auth.css'
 
 export default function Auth() {
-  const { setUser, login, email, setEmail, password, setPassword, error, setError, type, setType } = useUser();
+  const { email, setEmail, password, setPassword, error, setError, type, setType } = useUser();
+
+  const { login, signUp } = useAuth();
 
   const history = useHistory();
 
@@ -17,8 +19,8 @@ export default function Auth() {
         history.replace('/journalentries');
       } else {
         event.preventDefault();
-        const request = await signUpUser(email, password);
-        setUser(request);
+        await signUp(email, password);
+
         history.replace('/journalentries');
       }
     } catch (error) {
