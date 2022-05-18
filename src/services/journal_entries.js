@@ -9,11 +9,10 @@ export async function fetchEntries() {
     return parseData(request);
 };
 
-export async function createEntry(entry) {
+export async function createEntry({ description, dream_significance, nightmare, user_id }) {
     const request = await client
     .from('dream_journal')
-    .insert(entry)
-    .single();
+    .insert({ user_id, description, dream_significance, nightmare });
 
     return parseData(request);
 }
