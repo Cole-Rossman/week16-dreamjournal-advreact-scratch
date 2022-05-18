@@ -1,18 +1,12 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { signUpUser } from '../../services/users';
 import authStyle from './Auth.css'
 
 export default function Auth() {
-  const { setUser, login } = useUser();
+  const { setUser, login, email, setEmail, password, setPassword, error, setError, type, setType } = useUser();
 
   const history = useHistory();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [type, setType] = useState('');
 
   const handleSubmit = async (event) => {
     try {

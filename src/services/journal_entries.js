@@ -5,7 +5,7 @@ export async function fetchEntries() {
     .from('dream_journal')
     .select('*')
     .order('created_at', { ascending: false });
-
+    
     return parseData(request);
 };
 

@@ -17,4 +17,4 @@ jobs:
       env:
         CI: true
         SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        SUPABASE_KEY: ${{ secrets.SUPABASE_API_KEY }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
