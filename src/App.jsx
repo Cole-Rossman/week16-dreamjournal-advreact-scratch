@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Auth from './views/Auth/Auth';
 import Home from './views/Home/Home';
 import AddEntry from './views/JournalEntries/AddEntry';
-
+import ViewEntries from './views/JournalEntries/ViewEntries';
 
 export default function App() {
   const { currentUser } = useUser();
@@ -17,7 +17,15 @@ export default function App() {
       <Route path="/login">
         {!currentUser ? <Auth /> : <Redirect to="/" /> }
       </Route>
-      {/* finish all other routes */}
+      <PrivateRoute path="/journalentries/add">
+        <AddEntry />
+      </PrivateRoute>
+      <PrivateRoute path="/journalentries">
+        <ViewEntries />
+      </PrivateRoute>
+      <Route path="/">
+        <Home />
+      </Route>
     </Switch>
     </>
   );
