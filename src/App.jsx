@@ -1,5 +1,5 @@
 import { Route, Redirect, Switch } from 'react-router-dom';
-import { useUser } from './context/UserContext';
+import { useAuth } from './hooks/user';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Header from './components/Header/Header';
 import Auth from './views/Auth/Auth';
@@ -8,14 +8,14 @@ import AddEntry from './views/JournalEntries/AddEntry';
 import ViewEntries from './views/JournalEntries/ViewEntries';
 
 export default function App() {
-  const { currentUser } = useUser();
+  const { currentUser } = useAuth();
 
   return (
     <>
     {currentUser && <Header/>}
     <Switch>
       <Route path="/login">
-        {!currentUser ? <Auth /> : <Redirect to="/" /> }
+        {!currentUser ? <Auth /> : <Redirect to="/journalentries" /> }
       </Route>
       <PrivateRoute path="/journalentries/add">
         <AddEntry />
@@ -23,8 +23,12 @@ export default function App() {
       <PrivateRoute path="/journalentries">
         <ViewEntries />
       </PrivateRoute>
-      <Route path="/">
+      <Route path="/home">
         <Home />
+      </Route>
+      {/* lines 30-31 make it so our page will default to the home since the redirect will bring us home from http default / */}
+      <Route path="/">
+        <Redirect to="/home" />
       </Route>
     </Switch>
     </>

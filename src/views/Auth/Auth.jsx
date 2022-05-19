@@ -1,18 +1,16 @@
 import { useHistory } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
 import { useAuth } from '../../hooks/user';
 import authStyle from './Auth.css'
 
 export default function Auth() {
-  const { email, setEmail, password, setPassword, error, setError, type, setType } = useUser();
 
-  const { login, signUp } = useAuth();
+  const { login, signUp, email, setEmail, password, setPassword, error, setError, type, setType } = useAuth();
 
   const history = useHistory();
 
   const handleSubmit = async (event) => {
     try {
-      if (type === 'sign in') {
+      if (type === 'sign-in') {
         event.preventDefault();
         await login(email, password);
         // not setting user here because login function sets user in context
@@ -27,7 +25,6 @@ export default function Auth() {
       setError(error.message);
     }
   };
-
   return (
     <>
     <h1>
@@ -58,7 +55,7 @@ export default function Auth() {
         />
       </label>
       <button className={authStyle.button}
-      type='submit'>Submit</button>
+      type='submit'>{type}</button>
     </form>
     <p>{error}</p>
     </>

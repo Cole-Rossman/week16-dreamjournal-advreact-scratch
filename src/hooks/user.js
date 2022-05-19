@@ -9,23 +9,19 @@ export const useAuth = () => {
         throw new Error('useAuth must be used within a useProvider');
     }
 
-    const { user, setUser } = context;
+    const { user, setUser, email, setEmail, password, setPassword, error, setError, type, setType, currentUser } = context;
 
 
     const isLoggedIn = user?.email;
 
     const login = async (email, password) => {
         const authenticatedUser = await signInUser(email, password);
-        if (authenticatedUser) {
-            setUser(authenticatedUser);
-        }
+        setUser(authenticatedUser)
     };
 
     const signUp = async (email, password) => {
         const newUser = await signUpUser(email, password);
-        if (newUser) {
-            setUser(newUser);
-        }
+        setUser(newUser);
     };
 
 
@@ -34,5 +30,5 @@ export const useAuth = () => {
         signOutUser();
     };
 
-    return { user, isLoggedIn, signUp, login, logout };
+    return { user, isLoggedIn, signUp, login, logout, email, setEmail, password, setPassword, error, setError, type, setType, currentUser };
 }
