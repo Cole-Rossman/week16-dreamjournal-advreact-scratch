@@ -6,6 +6,7 @@ import Auth from './views/Auth/Auth';
 import Home from './views/Home/Home';
 import AddEntry from './views/JournalEntries/AddEntry';
 import ViewEntries from './views/JournalEntries/ViewEntries';
+import EntriesDetail from './views/JournalEntries/EntriesDetail';
 
 export default function App() {
   const { currentUser } = useAuth();
@@ -20,7 +21,10 @@ export default function App() {
       <PrivateRoute path="/journalentries/add">
         <AddEntry />
       </PrivateRoute>
-      <PrivateRoute path="/journalentries">
+      <PrivateRoute exact path="/journalentries/:id">
+        <EntriesDetail />
+      </PrivateRoute>
+      <PrivateRoute exact path="/journalentries">
         <ViewEntries />
       </PrivateRoute>
       <Route path="/home">
