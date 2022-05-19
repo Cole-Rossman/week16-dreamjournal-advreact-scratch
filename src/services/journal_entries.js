@@ -7,12 +7,12 @@ export async function fetchEntries() {
     .order('created_at', { ascending: false });
     
     return parseData(request);
-};
+}
 
 export async function createEntry({ description, dream_significance, nightmare, user_id }) {
     const request = await client
     .from('dream_journal')
-    .insert({ user_id, description, dream_significance, nightmare });
+    .insert({ user_id, description, dream_significance, nightmare }).single();
 
     return parseData(request);
 }
