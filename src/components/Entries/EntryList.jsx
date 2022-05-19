@@ -1,7 +1,21 @@
-import React from 'react'
+import EntryItem from "./EntryItem";
 
-export default function EntryList() {
+
+export default function EntryList({ entries }) {
+
+    if (!entries) return null;
+
+
   return (
-    <div>EntryList</div>
-  )
+    <ul>
+        {entries.map((entry) => {
+          return (
+           <EntryItem
+              key={entry.id}
+              entry={entry}
+              />
+           );
+        })}
+    </ul>
+  );
 }
