@@ -9,10 +9,10 @@ export async function fetchEntries() {
     return parseData(request);
 }
 
-export async function createEntry({ description, dream_significance, nightmare, user_id }) {
+export async function createEntry({ description, dream_significance, nightmare, user_id, date }) {
     const request = await client
     .from('dream_journal')
-    .insert({ user_id, description, dream_significance, nightmare }).single();
+    .insert({ user_id, description, dream_significance, nightmare, date }).single();
 
     return parseData(request);
 }
