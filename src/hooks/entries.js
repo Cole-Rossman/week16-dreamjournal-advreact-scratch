@@ -23,5 +23,14 @@ export function useEntries() {
     fetchData()
     }, []);
 
-    
+    const addEntry = async (entry) => {
+        try {
+            const addedEntry = await createEntry(entry);
+            dispatch({ type: 'CREATE', payload: addedEntry })
+        } catch (error) {
+            throw error.message;
+        }
+    };
+
+    return { entries, addEntry };
 }
