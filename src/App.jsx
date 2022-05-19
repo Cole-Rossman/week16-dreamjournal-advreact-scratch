@@ -26,7 +26,7 @@ export default function App() {
       <Route path="/home">
         <Home />
       </Route>
-      {/* lines 30-31 make it so our page will default to the home since the redirect will bring us home from http default / */}
+      {/* lines 30-31 make it so our page will default to the /home since the redirect will bring us to /home from http default of / */}
       <Route path="/">
         <Redirect to="/home" />
       </Route>

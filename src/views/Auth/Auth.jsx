@@ -29,10 +29,10 @@ export default function Auth() {
     <>
     <h1>
       <span className={type === 'sign-in' ? authStyle.active : ''} onClick={() => setType('sign-in')}>
-        Sign In
+        Sign-in
       </span>
       <span className={type === 'sign-up' ? authStyle.active : ''} onClick={() => setType('sign-up')}>
-        Sign Up
+        Sign-up
       </span>
     </h1>
     <form className={authStyle.form} onSubmit={handleSubmit}>
