@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 export const EntriesContext = createContext();
 
@@ -21,7 +21,7 @@ export const EntriesProvider = ({ children }) => {
     const [entries, dispatch] = useReducer(reducer);
 
     return (
-        <EntriesContext.Provider value={{ entries, dispatch}}>
+        <EntriesContext.Provider value={{ entries, dispatch }}>
             {children}
         </EntriesContext.Provider>
     );

@@ -32,5 +32,6 @@ export function useEntries() {
         }
     };
 
+
     return { entries, addEntry };
 }

@@ -8,8 +8,6 @@ export default function EntriesDetail() {
     let location = useLocation();
     
     const entry = location.state.entry;
-    console.log('entry', entry)
-    
     
     const { user } = useAuth();
     const { id, date, description, dream_significance, nightmare } = entry;
@@ -21,13 +19,18 @@ export default function EntriesDetail() {
         <p>Dream description: {description}</p>
         <p>What does this dream mean: {dream_significance}</p>
         <p>Was this dream a nightmare: {nightmare}</p>
-         <span>
+         <div>
             {isCreator &&
             <Link to={`/journalentries/${id}/edit`}>
                 <button>Edit</button>
             </Link>
             }
-        </span>
+        </div>
+        <div>
+            <Link to="/journalentries">
+                <button>Back to entries</button>
+            </Link>
+        </div>
     </div>
   )
 }
