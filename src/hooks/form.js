@@ -1,16 +1,21 @@
-import { useContext } from "react";
-import { EntriesContext } from "../context/EntriesContext";
+import { useState } from 'react';
 
-export default function useForm() {
-  const context = useContext(EntriesContext);
+export default function useForm(inputs = {}) {
+ const [formState, setFormState] = useState(inputs);
 
-  if (context === undefined) {
-    throw new Error('useEntries must be used within a EntriesContext');
-}
+ const handleChange = (event) => {
+   const { name, value } = event.target;
 
-  const { } = context;
+   setFormState((prevState) => {
+    //  name: value is referring to the form in entries form where the value is set to formState.value. name comes from the name property in the form. event.target is targeting both properties in the form.
+    return {
+      ...prevState,
+      [name]: value
+    };
+   });
+ };
 
   
 
-  return {};
+  return { formState, handleChange };
 }
