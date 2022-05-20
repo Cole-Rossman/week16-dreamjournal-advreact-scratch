@@ -12,7 +12,28 @@ export async function fetchEntries() {
 export async function createEntry({ description, dream_significance, nightmare, user_id, date }) {
     const request = await client
     .from('dream_journal')
-    .insert({ user_id, description, dream_significance, nightmare, date }).single();
+    .insert({ user_id, description, dream_significance, nightmare, date })
+    .single();
+
+    return parseData(request);
+}
+
+export async function updateEntry({ id, date, description, dream_significance, nightmare }) {
+    const request = await client
+    .from('dream_journal')
+    .update({ date, description, dream_significance, nightmare })
+    .match({ id: id })
+    .single();
+
+    return parseData(request);
+}
+
+export async function deleteEntry({ id }) {
+    const request = await client
+    .from('dream_journal')
+    .delete()
+    .match({ id: id })
+    .single()
 
     return parseData(request);
 }
