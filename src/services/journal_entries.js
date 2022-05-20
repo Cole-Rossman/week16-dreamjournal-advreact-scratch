@@ -18,11 +18,11 @@ export async function createEntry({ description, dream_significance, nightmare, 
     return parseData(request);
 }
 
-export async function updateEntry({ id, date, description, dream_significance, nightmare }) {
+export async function editEntry({ id, date, description, dream_significance, nightmare }) {
     const request = await client
     .from('dream_journal')
     .update({ date, description, dream_significance, nightmare })
-    .match({ id: id })
+    .match({ id })
     .single();
 
     return parseData(request);
@@ -32,8 +32,18 @@ export async function deleteEntry({ id }) {
     const request = await client
     .from('dream_journal')
     .delete()
-    .match({ id: id })
+    .match({ id })
     .single()
+
+    return parseData(request);
+}
+
+export async function getEntry(id) {
+    const request = await client
+    .from('dream_journal')
+    .select('*')
+    .match({ id })
+    .single();
 
     return parseData(request);
 }
