@@ -8,6 +8,7 @@ export default function EntriesDetail() {
     let location = useLocation();
     
     const entry = location.state.entry;
+    console.log('entry', entry)
     
     
     const { user } = useAuth();
@@ -15,6 +16,11 @@ export default function EntriesDetail() {
     const isCreator = user.id === entry.user_id;
   return (
     <div>
+        <h1>Your Dream Journal</h1>
+        <h3>Dream from the night of: {date}</h3>
+        <p>Dream description: {description}</p>
+        <p>What does this dream mean: {dream_significance}</p>
+        <p>Was this dream a nightmare: {nightmare}</p>
          <span>
             {isCreator &&
             <Link to={`/journalentries/${id}/edit`}>
