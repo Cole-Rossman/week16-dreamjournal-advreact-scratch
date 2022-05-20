@@ -28,7 +28,7 @@ export async function editEntry({ id, date, description, dream_significance, nig
     return parseData(request);
 }
 
-export async function deleteEntry({ id }) {
+export async function deleteEntry(id) {
     const request = await client
     .from('dream_journal')
     .delete()

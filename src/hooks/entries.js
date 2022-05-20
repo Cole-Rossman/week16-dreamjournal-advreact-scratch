@@ -78,9 +78,9 @@ export function useEntry(id) {
         }
     };
 
-    const removeEntry = async () => {
+    const removeEntry = async (id) => {
         try {
-            const payload = await deleteEntry(entry.id);
+            const payload = await deleteEntry(id);
             setEntry(null);
             if (entries) dispatch({ type: 'DELETE', payload});
             return payload;
