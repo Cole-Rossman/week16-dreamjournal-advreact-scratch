@@ -43,10 +43,12 @@ export default function EntriesDetail() {
             </Link>
         </div>
         <div>
+            {isCreator &&
             <button
             type='submit'
             onClick={handleSubmit}
             >Delete Dream</button>
+            }
         </div>
     </div>
   )
