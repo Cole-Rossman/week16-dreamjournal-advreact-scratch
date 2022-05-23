@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState('sign-up');
     const [user, setUser] = useState(currentUser || {email: null});
     
     
