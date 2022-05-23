@@ -7,12 +7,15 @@ export default function EntryItem({ entry }) {
     const isCreator = user.id === user_id;
     const entryDate = new Date(created_at);
     const action = isCreator ? 'edit' : 'copy';
-
+    const fromUser = isCreator ? user.email : 'Other community member';
   return (
     <li>
       <span>Journal entry created at: {entryDate.toLocaleDateString()}</span>
       <div>
-        Dream from {date}
+        <span>From: {fromUser}</span>
+      </div>
+      <div>
+        <span>Dream from: {date}</span>
         {/* below i am passing my entry state through the link so that the detail page has access to it */}
         <div>
         <Link to={{

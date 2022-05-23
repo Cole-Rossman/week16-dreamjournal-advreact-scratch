@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useEntries } from "../../hooks/entries";
 import EntriesForm from "../../components/Form/EntriesForm";
 
