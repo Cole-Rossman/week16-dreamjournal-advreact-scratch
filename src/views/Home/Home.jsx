@@ -8,9 +8,9 @@ export default function Home() {
     <>
     <h1>Welcome to your personal dream journal!</h1>
     <p>
-      Dreams can be full of wonder, fright and everything in between. Taking note of your dreams can help reduce stress, remember amazing ideas, solve problems and learn from your mistakes. 
+      Dreams can be full of wonder, fright and everything in between. Taking note of your dreams can help reduce stress, remember amazing ideas, solve problems and learn from your mistakes. This app was designed to share your dreams with your friends.
     </p>
-    <p>To start logging your dreams, please create an account below or login. If you already logged in, you'll be redirected to your journal entries.</p>
+    <p>To start logging your dreams and see other people's dreams, please create an account below or login. If you already logged in, you'll be redirected to your community's journal entries.</p>
     {isLoggedIn ? (
       <Link to="/journalentries">Journal entries</Link>
     ) : (
