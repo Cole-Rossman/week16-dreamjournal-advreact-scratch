@@ -6,7 +6,7 @@ export default function CopyEntry() {
     const history = useHistory();
     const { id } = useParams();
     const { entry } = useEntry(id);
-    const { addEntry } = useEntries;
+    const { addEntry } = useEntries();
 
     if (!entry) return null;
 
